@@ -11,4 +11,5 @@ Gem::Specification.new do |s|
   s.files             = `git ls-files`.split("\n")
   s.license           = "MIT"
   s.add_development_dependency "cutest", '~>1.2'
+  s.add_runtime_dependency "fast-stemmer", '~>1.0'
 end
