@@ -23,3 +23,19 @@ test "Filtra::Text should filter and downcase some words" do
     result = filtro.call(words)
     assert_equal result, %w(Running fishes Among the Coast line coast)
 end
+
+
+test "stopwords should stop words from being indexed" do
+    filtro = Filtra.new(stopwords: %w(this that those there))
+    words = %w(this can be a nice idea that might not work)
+    result = filtro.call(words)
+    assert_equal result, %w(can be a nice idea might not work)
+end
+
+test "stopwords from Filtra.stopwords" do
+    filtro = Filtra.new(stopwords: Filtra.stopwords )
+    words = %w(this can be a nice idea that might not work)
+    result = filtro.call(words)
+    assert_equal result, %w(can nice idea might work)
+end
+

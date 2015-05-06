@@ -6,13 +6,12 @@ class Filtra
             out = []
             keep_case = opts[:keep_case] || false
             stem = opts[:stem] || false
-            # keep case
-            # stemm
+            stopwords = opts[:stopwords] || []
             words.each do |word|
                 word.downcase! unless keep_case                
                 out.push( stem ? word.stem : word)
             end
-            out.uniq
+            out.uniq - stopwords
         end
     end
 end
